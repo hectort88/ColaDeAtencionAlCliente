@@ -4,7 +4,44 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div id="app">
+
+<div class="container">
+    <div class="row">
+        <form v-on:submit="addPerson" class="form-inline">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-5 col-sm-12">
+                        <input type="number" id="cedula" v-model="data.cedula" min="0" class="form-control" placeholder="Cedula" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5 col-sm-12">
+                        <input type="text" v-model="data.nombre" id="nombre" class="form-control" placeholder="Nombre" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2 col-sm-12">
+                        <input type="submit" ref="btnAdd" id="sendButton" value="Agregar Persona" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <hr />
+    <p>Fila 1:</p>    
+    <div id="queue1">
+        <people-queue :people="queue1"></people-queue>
+    </div>
+    <hr />
+    <p>Fila 2:</p>
+    <div id="queue2">
+        <people-queue :people="queue2"></people-queue>
+    </div>
 </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+<script src="~/js/fila.js"></script>
+
