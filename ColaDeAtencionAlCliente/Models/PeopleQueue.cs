@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace ColaDeAtencionAlCliente.Models
@@ -41,7 +40,7 @@ namespace ColaDeAtencionAlCliente.Models
                 using var db = new PersonContext();
                 db.Update(person);
                 db.SaveChanges();
-                SendQueueInJsonFormat();                
+                SendQueueInJsonFormat();
             }
         }
 

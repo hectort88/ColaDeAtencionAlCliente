@@ -5,8 +5,6 @@ using ColaDeAtencionAlCliente.Hubs;
 using ColaDeAtencionAlCliente.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SignalR;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
 namespace ColaDeAtencionAlCliente
