@@ -6,6 +6,7 @@ Vue.component('people-queue', {
         <div class="row">
         <div class="col-xs-1 col-sm-1 col-md-1 persona" v-for="person in people" :key="person.ID">
             <img src="/img/person.png" />
+            <p>{{ person.Cedula }}</p>
             <p>{{ person.Name }}</p>
         </div>
         </div>
