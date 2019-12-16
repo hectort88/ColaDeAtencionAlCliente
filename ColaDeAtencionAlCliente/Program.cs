@@ -14,6 +14,7 @@ namespace ColaDeAtencionAlCliente
         public static IHubContext<AttentionQueueHub> hubContext;
         public static string connectionString;
         public static QueueMannager mannager;
+        
         public static void Main(string[] args)
         {
 
