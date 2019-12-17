@@ -14,6 +14,7 @@ namespace ColaDeAtencionAlCliente
         public static IHubContext<AttentionQueueHub> hubContext;
         public static string connectionString;
         public static QueueMannager mannager;
+        
         public static void Main(string[] args)
         {
 
@@ -48,7 +49,7 @@ namespace ColaDeAtencionAlCliente
 
             mannager.InitiateTimers();
 
-            // Cargar persona que han sido atendidas.
+            // Cargar persona desde la base de datos que no han sido atendidas.
             using var db = new PersonContext();
             var people = db.People.ToList().Where(p => !p.Attended);
             foreach (var p in people)
