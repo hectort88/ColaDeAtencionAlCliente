@@ -46,7 +46,8 @@ namespace ColaDeAtencionAlCliente.Models
 
         public double TimeToWait()
         {
-            return People.Count() * Interval.TotalSeconds + SecondsLeft;
+            if (People.Count() == 0) return 0;
+            return ((People.Count() - 1) * Interval.TotalSeconds) + SecondsLeft;
         }
 
         public void SendQueueInJsonFormat()
@@ -57,14 +58,20 @@ namespace ColaDeAtencionAlCliente.Models
 
         public void StartTimer()
         {
+            SecondsLeft = (int)Interval.TotalSeconds;
             Task.Run(async () =>
             {
                 while (true)
                 {
                     if (People.Count > 0)
                     {
-                        await Task.Delay(Interval);
-                        RemovePerson();
+                        await Task.Delay(1000);
+                        SecondsLeft -= 1;
+                        if (SecondsLeft <= 0)
+                        {
+                            RemovePerson();
+                            SecondsLeft = (int)Interval.TotalSeconds;
+                        }
                     }
                 }
             });
